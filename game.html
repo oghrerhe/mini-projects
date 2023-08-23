@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    h1 {
+      margin-top: 40px;
+    }
+    .choices {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .choices button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 24px;
+    }
+    .computer-choice {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rock Paper Scissors</h1>
+  <div class="choices">
+    <button onclick="play('rock')">Rock</button>
+    <button onclick="play('paper')">Paper</button>
+    <button onclick="play('scissors')">Scissors</button>
+  </div>
+  <div class="result" id="result"></div>
+  <div class="computer-choice" id="computer-choice"></div>
+
+  <script>
+    function play(userChoice) {
+      var choices = ['rock', 'paper', 'scissors'];
+      var computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+      var result = document.getElementById('result');
+      var computerChoiceText = document.getElementById('computer-choice');
+
+      computerChoiceText.innerHTML = "Computer chose: " + computerChoice;
+
+      if (userChoice === computerChoice) {
+        result.innerHTML = "It's a tie!";
+      } else if (
+        (userChoice === 'rock' && computerChoice === 'scissors') ||
+        (userChoice === 'paper' && computerChoice === 'rock') ||
+        (userChoice === 'scissors' && computerChoice === 'paper')
+      ) {
+        result.innerHTML = "You win!";
+      } else {
+        result.innerHTML = "Computer wins!";
+      }
+    }
+  </script>
+</body>
+</html>
